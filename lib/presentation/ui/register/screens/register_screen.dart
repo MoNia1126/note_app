@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:note_app/components/custom_elvated_button.dart';
 import 'package:note_app/components/custom_text_button.dart';
 import 'package:note_app/components/custom_text_form_field.dart';
+import 'package:note_app/constants/my_theme.dart';
 import 'package:note_app/presentation/ui/login/screens/login_screen.dart';
 import 'package:note_app/presentation/ui/register/RegisterCubit/register_cubit.dart';
 import 'package:note_app/presentation/ui/register/RegisterCubit/register_state.dart';
@@ -24,6 +25,16 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(LoginScreen.routeName);
+            },
+            icon: Icon(Icons.arrow_back_ios_new, color: MyTheme.whiteColor)),
+      ),
       body: BlocProvider(
         create: (context) => RegisterCubit(),
         child: BlocConsumer<RegisterCubit, RegisterState>(

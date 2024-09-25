@@ -24,111 +24,118 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
   @override
   Widget build(BuildContext context) {
     final userId = FirebaseAuth.instance.currentUser?.uid;
-    return Container(
-      padding: const EdgeInsets.all(12),
-      child: Column(
-        children: [
-          Text(
-            (AppLocalizations.of(context)!.addNewNote),
-            style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                  fontFamily: 'PlaywriteCU',
-                  color: Theme.of(context).primaryColor,
-                ),
-          ),
-          Form(
-            key: formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: TextFormField(
-                    validator: (text) {
-                      if (text == null || text.isEmpty) {
-                        return (AppLocalizations.of(context)!.pleaseEnterTitle);
-                      }
-                      title = text;
-                      return null;
-                    },
-                    decoration: InputDecoration(
-                      hintText: (AppLocalizations.of(context)!.enterNoteTitle),
+    return Padding(
+      padding: MediaQuery.of(context).viewInsets,
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          children: [
+            Text(
+              (AppLocalizations.of(context)!.addNewNote),
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    fontFamily: 'PlaywriteCU',
+                    color: Theme.of(context).primaryColor,
+                  ),
+            ),
+            Form(
+              key: formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: TextFormField(
+                      cursorColor: Theme.of(context).primaryColor,
+                      validator: (text) {
+                        if (text == null || text.isEmpty) {
+                          return (AppLocalizations.of(context)!
+                              .pleaseEnterTitle);
+                        }
+                        title = text;
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        hintText:
+                            (AppLocalizations.of(context)!.enterNoteTitle),
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: TextFormField(
-                    validator: (text) {
-                      if (text == null || text.isEmpty) {
-                        return (AppLocalizations.of(context)!
-                            .pleaseEnterNoteDescription);
-                      }
-                      description = text;
-                      return null;
-                    },
-                    decoration: InputDecoration(
-                      hintText:
-                          (AppLocalizations.of(context)!.enterNoteDescription),
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: TextFormField(
+                      cursorColor: Theme.of(context).primaryColor,
+                      validator: (text) {
+                        if (text == null || text.isEmpty) {
+                          return (AppLocalizations.of(context)!
+                              .pleaseEnterNoteDescription);
+                        }
+                        description = text;
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        hintText: (AppLocalizations.of(context)!
+                            .enterNoteDescription),
+                      ),
+                      maxLines: 3,
                     ),
-                    maxLines: 3,
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Text(
-                    (AppLocalizations.of(context)!.selectDate),
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleSmall!
-                        .copyWith(color: Colors.black),
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    showCalendar();
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
                     child: Text(
-                      "${selectedDate.day}/${selectedDate.month}/${selectedDate.year}",
-                      textAlign: TextAlign.center,
+                      (AppLocalizations.of(context)!.selectDate),
                       style: Theme.of(context)
                           .textTheme
                           .titleSmall!
                           .copyWith(color: Colors.black),
                     ),
                   ),
-                ),
-                BlocBuilder<NotesCubit, NotesState>(
-                  builder: (context, state) {
-                    return CustomElevatedButton(
-                      text: (AppLocalizations.of(context)!.add),
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) {
-                          formKey.currentState!.save();
-                          var noteId = FirebaseFirestore.instance
-                              .collection('users')
-                              .doc(userId)
-                              .collection('Note')
-                              .doc()
-                              .id;
-                          final note = Note(
-                            title: title,
-                            description: description,
-                            dateTime: selectedDate,
-                            noteId: noteId,
-                          );
-                          BlocProvider.of<NotesCubit>(context).addNote(note);
-                          Navigator.pop(context);
-                        }
-                      },
-                    );
-                  },
-                ),
-              ],
+                  InkWell(
+                    onTap: () {
+                      showCalendar();
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "${selectedDate.day}/${selectedDate.month}/${selectedDate.year}",
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleSmall!
+                            .copyWith(color: Colors.black),
+                      ),
+                    ),
+                  ),
+                  BlocBuilder<NotesCubit, NotesState>(
+                    builder: (context, state) {
+                      return CustomElevatedButton(
+                        text: (AppLocalizations.of(context)!.add),
+                        onPressed: () {
+                          if (formKey.currentState!.validate()) {
+                            formKey.currentState!.save();
+                            var noteId = FirebaseFirestore.instance
+                                .collection('users')
+                                .doc(userId)
+                                .collection('Note')
+                                .doc()
+                                .id;
+                            final note = Note(
+                              title: title,
+                              description: description,
+                              dateTime: selectedDate,
+                              noteId: noteId,
+                            );
+                            BlocProvider.of<NotesCubit>(context).addNote(note);
+                            Navigator.pop(context);
+                          }
+                        },
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

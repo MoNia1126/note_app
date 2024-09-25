@@ -25,6 +25,7 @@ class CustomTextFormField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: TextFormField(
+        cursorColor: Theme.of(context).primaryColor,
         decoration: InputDecoration(
           hintStyle: TextStyle(color: Colors.white),
           label: Text(label,style: TextStyle(color: Colors.white),),

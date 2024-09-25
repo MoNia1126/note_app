@@ -21,7 +21,6 @@ class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
 
   @override
-  @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => UserCubit()..fetchUserName(),
@@ -31,9 +30,10 @@ class _HomeScreenState extends State<HomeScreen> {
           elevation: 0,
           title: BlocBuilder<UserCubit, UserState>(
             builder: (context, state) {
-              if (state is UserLoading) {
-                return const CircularProgressIndicator();
-              } else if (state is UserLoaded) {
+              // if (state is UserLoading) {
+              //   return const CircularProgressIndicator();
+              // } else
+              if (state is UserLoaded) {
                 return Text(
                   '${(AppLocalizations.of(context)!.welcome)}, ${state.userName}',
                   style: Theme.of(context).textTheme.titleMedium!.copyWith(
@@ -75,15 +75,11 @@ class _HomeScreenState extends State<HomeScreen> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             showModalBottomSheet(
-              // isScrollControlled: true,
               context: context,
+              isScrollControlled: true,
               builder: (context) {
-                // padding: MediaQuery.of(context).viewInsets.bottom;
                 return SingleChildScrollView(
-                  child: Padding(
-                    padding: MediaQuery.of(context).viewInsets,
-                    child: AddTaskBottomSheet(),
-                  ),
+                  child: AddTaskBottomSheet(),
                 );
               },
             );

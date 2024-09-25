@@ -51,5 +51,13 @@
   "successfullySignedOut": "Successfully signed out",
   "registrationFailed": "Registration Failed",
   "loginFailed": "Login Failed",
-  "ok": "Ok"
+  "ok": "Ok",
+  "details": "Details",
+  "delete": "Delete",
+  "deleteS": "delete",
+  "areYouSureYouWantToDeleteNote": "Are you sure you want to delete note?",
+  "areYouSureYouWantToLogout": "Are you sure you want to logout?",
+  "cancel": "Cancel",
+  "logoutS": "logout",
+  "logout": "Logout"
 }

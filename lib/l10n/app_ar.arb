@@ -50,5 +50,11 @@
   "successfullySignedOut": "تم تسجيل الخروج بنجاح",
   "registrationFailed": "فشل تسجيل الدخول",
   "loginFailed": "فشل تسجيل الدخول",
-  "ok": "اوك"
+  "ok": "اوك",
+  "details": "التفاصيل",
+  "delete": "حذف",
+  "areYouSureYouWantToDeleteNote": "هل انت متأكد انك تريد حذف الملاحظة؟",
+  "logout": "تسجيل خروج",
+  "cancel": "الغاء",
+  "areYouSureYouWantToLogout": "هل انت متأكد انك تريد تسجيل الخروج؟"
 }

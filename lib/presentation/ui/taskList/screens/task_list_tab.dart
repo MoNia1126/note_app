@@ -18,12 +18,12 @@ class _TaskListTabState extends State<TaskListTab> {
   Widget build(BuildContext context) {
     return BlocBuilder<NotesCubit, NotesState>(
       builder: (context, state) {
-        if (state is NotesLoading) {
-          return Center(
-              child: CircularProgressIndicator(
-            color: Theme.of(context).primaryColor,
-          ));
-        } else if (state is NotesLoaded) {
+        // if (state is NotesLoading) {
+        //   return Center(
+        //       child: CircularProgressIndicator(
+        //     color: Theme.of(context).primaryColor,
+        //   ));
+        if (state is NotesLoaded) {
           List<Note> notes = state.notes;
           return Column(
             children: [
@@ -43,7 +43,7 @@ class _TaskListTabState extends State<TaskListTab> {
           return Center(child: Text((AppLocalizations.of(context)!.error)));
         } else {
           return Center(
-            child: Text((AppLocalizations.of(context)!.noNotesAvailable)),
+            child: Text(""),
           );
         }
       },

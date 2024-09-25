@@ -5,6 +5,7 @@ import 'package:note_app/presentation/cubits/changeLanguageCubit/change_language
 import 'package:note_app/presentation/ui/editTask/screens/edit_task.dart';
 import 'package:note_app/presentation/ui/home/screens/home_screen.dart';
 import 'package:note_app/presentation/ui/login/screens/login_screen.dart';
+import 'package:note_app/presentation/ui/note_detail_page.dart';
 import 'package:note_app/presentation/ui/register/screens/register_screen.dart';
 import 'package:note_app/presentation/ui/settings/setting_screen.dart';
 import 'package:note_app/constants/my_theme.dart';
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
             HomeScreen.routeName: (context) => const HomeScreen(),
             SettingsScreen.routeName: (context) => const SettingsScreen(),
             EditTask.routeName: (context) => const EditTask(),
+            NoteDetailPage.routeName: (context) => NoteDetailPage()
           },
           theme: MyTheme.lightTheme,
           debugShowCheckedModeBanner: false,

@@ -89,6 +89,7 @@ class _EditTaskState extends State<EditTask> {
                           Padding(
                             padding: const EdgeInsets.all(20.0),
                             child: TextFormField(
+                              cursorColor: Theme.of(context).primaryColor,
                               controller: titleController,
                               validator: (text) {
                                 if (text == null || text.isEmpty) {

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_app/components/custom_confirmation_dialog.dart';
 import 'package:note_app/presentation/cubits/changeLanguageCubit/change_language_cubit.dart';
 import 'package:note_app/presentation/ui/login/screens/login_screen.dart';
 import 'package:note_app/components/toast.dart';
@@ -73,12 +74,29 @@ class _SettingsTabState extends State<SettingsScreen> {
                 ),
                 IconButton(
                     onPressed: () async {
-                      await FirebaseAuth.instance.signOut();
-                      showToast(
-                          message: (AppLocalizations.of(context)!
-                              .successfullySignedOut));
-                      Navigator.pushReplacementNamed(
-                          context, LoginScreen.routeName);
+                      return await showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return CustomConfirmationDialog(
+                              title: AppLocalizations.of(context)!.logout,
+                              content: AppLocalizations.of(context)!
+                                  .areYouSureYouWantToLogout,
+                              action1: AppLocalizations.of(context)!.logout,
+                              action2: AppLocalizations.of(context)!.cancel,
+                              onPressed: () async {
+                                await FirebaseAuth.instance.signOut();
+                                // showToast(
+                                //     message: (AppLocalizations.of(context)!
+                                //         .successfullySignedOut));
+                                Navigator.of(context).pop();
+                                Navigator.pushReplacementNamed(
+                                    context, LoginScreen.routeName);
+                              },
+                              pressed: () {
+                                Navigator.of(context).pop(false);
+                              });
+                        },
+                      );
                     },
                     icon: const Icon(Icons.logout_outlined),
                     color: Colors.red)
