@@ -12,10 +12,9 @@ class CustomElevatedButton extends StatelessWidget {
       padding: const EdgeInsets.all(10.0),
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            primary: Color(0xff005698),
-            padding: EdgeInsets.symmetric(vertical: 12),
-            shape: BeveledRectangleBorder(
-
+            backgroundColor: const Color(0xff005698),
+            padding: const EdgeInsets.symmetric(vertical: 12),
+            shape: const BeveledRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(9))),
           ),
           onPressed: () {

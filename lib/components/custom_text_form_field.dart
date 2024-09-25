@@ -8,16 +8,17 @@ class CustomTextFormField extends StatelessWidget {
   String? Function(String?)? validator;
   String hintText;
   Icon? prefixIcon;
+  int maxLines;
 
-  CustomTextFormField(
-      {required this.label,
+  CustomTextFormField({super.key,
+    this.label = '',
         this.keyboardType = TextInputType.text,
         required this.controller,
         this.obscureText = false,
         required this.validator,
-        required this.prefixIcon,
-        required this.hintText
-      });
+      this.prefixIcon,
+      required this.hintText,
+      this.maxLines = 1});
 
   @override
   Widget build(BuildContext context) {
