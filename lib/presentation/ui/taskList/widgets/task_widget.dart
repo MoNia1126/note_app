@@ -21,7 +21,6 @@ class _TaskWidgetState extends State<TaskWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final userId = FirebaseAuth.instance.currentUser?.uid;
     return InkWell(
       onTap: () async {
         final updatedNote = await Navigator.pushNamed(

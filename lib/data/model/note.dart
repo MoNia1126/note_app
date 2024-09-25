@@ -31,7 +31,7 @@ class Note {
       'noteId': noteId,
       'title': title,
       'description': description,
-      'dateTime': dateTime?.millisecondsSinceEpoch,
+      'dateTime': dateTime.millisecondsSinceEpoch,
       'isDone': isDone
     };
   }
