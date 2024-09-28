@@ -6,13 +6,11 @@ import 'package:note_app/components/background_image.dart';
 import 'package:note_app/components/custom_elvated_button.dart';
 import 'package:note_app/components/custom_text_button.dart';
 import 'package:note_app/constants/routes.dart';
-import 'package:note_app/presentation/ui/login/screens/login_screen.dart';
 import 'package:note_app/presentation/ui/register/RegisterCubit/register_cubit.dart';
 import 'package:note_app/presentation/ui/register/RegisterCubit/register_state.dart';
 import 'package:note_app/presentation/ui/register/widgets/back_button_widget.dart';
 import 'package:note_app/presentation/ui/register/widgets/header_text.dart';
 import 'package:note_app/presentation/ui/register/widgets/input_fields.dart';
-import '../../home/screens/home_screen.dart';
 
 class RegisterScreen extends StatelessWidget {
 

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:note_app/components/custom_text_button.dart';
 import 'package:note_app/constants/routes.dart';
-import 'package:note_app/presentation/ui/register/screens/register_screen.dart';
 
 class SignUpOption extends StatelessWidget {
   const SignUpOption({super.key});

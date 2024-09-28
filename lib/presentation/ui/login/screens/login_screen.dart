@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/constants/routes.dart';
-import 'package:note_app/presentation/ui/home/screens/home_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:note_app/presentation/ui/login/LoginCubit/login_cubit.dart';
 import 'package:note_app/presentation/ui/login/LoginCubit/login_state.dart';
