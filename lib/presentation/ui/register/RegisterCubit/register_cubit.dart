@@ -75,7 +75,7 @@ class RegisterCubit extends Cubit<RegisterState> {
         id: credential.user?.uid ?? '',
         userName: userName,
         email: email,
-      );
+          password: password);
 
       await FirebaseUtils.addUserToFireStore(myUser);
 

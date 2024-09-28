@@ -56,5 +56,8 @@
   "areYouSureYouWantToDeleteNote": "هل انت متأكد انك تريد حذف الملاحظة؟",
   "logout": "تسجيل خروج",
   "cancel": "الغاء",
-  "areYouSureYouWantToLogout": "هل انت متأكد انك تريد تسجيل الخروج؟"
+  "areYouSureYouWantToLogout": "هل انت متأكد انك تريد تسجيل الخروج؟",
+  "passwordNotFound": "كلمة السر ليس موجود",
+  "emailNotFound": "البريد الالكتروني ليس موجود",
+  "date": "التاريخ"
 }

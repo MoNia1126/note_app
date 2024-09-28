@@ -31,7 +31,7 @@
   "addNewNote": "Add new note",
   "enterNoteTitle": "Enter Note Title",
   "enterNoteDescription": "Enter Note Description",
-  "selectDate": "SelectDate",
+  "selectDate": "Select Date",
   "add": "Add",
   "noteTitle": "Note Title",
   "des": "Des",
@@ -53,11 +53,14 @@
   "loginFailed": "Login Failed",
   "ok": "Ok",
   "details": "Details",
-  "delete": "Delete",
   "deleteS": "delete",
   "areYouSureYouWantToDeleteNote": "Are you sure you want to delete note?",
   "areYouSureYouWantToLogout": "Are you sure you want to logout?",
   "cancel": "Cancel",
   "logoutS": "logout",
-  "logout": "Logout"
+  "logout": "Logout",
+  "passwordNotFound": "Password Not Found",
+  "emailNotFound": "Email Not Found",
+  "date": "Date"
+
 }

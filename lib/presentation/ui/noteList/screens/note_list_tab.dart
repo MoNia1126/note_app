@@ -3,34 +3,34 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/data/model/note.dart';
 import 'package:note_app/presentation/cubits/NotesCubit/notes_cubit.dart';
 import 'package:note_app/presentation/cubits/NotesCubit/notes_state.dart';
-import 'package:note_app/presentation/ui/taskList/widgets/task_widget.dart';
+import 'package:note_app/presentation/ui/noteList/widgets/note_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class TaskListTab extends StatefulWidget {
-  const TaskListTab({super.key});
+class NoteListTab extends StatefulWidget {
+  const NoteListTab({super.key});
 
   @override
-  State<TaskListTab> createState() => _TaskListTabState();
+  State<NoteListTab> createState() => _NoteListTabState();
 }
 
-class _TaskListTabState extends State<TaskListTab> {
+class _NoteListTabState extends State<NoteListTab> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<NotesCubit, NotesState>(
       builder: (context, state) {
-        // if (state is NotesLoading) {
-        //   return Center(
-        //       child: CircularProgressIndicator(
-        //     color: Theme.of(context).primaryColor,
-        //   ));
-        if (state is NotesLoaded) {
+        if (state is NotesLoading) {
+          return Center(
+              child: CircularProgressIndicator(
+            color: Theme.of(context).primaryColor,
+          ));
+        } else if (state is NotesLoaded) {
           List<Note> notes = state.notes;
           return Column(
             children: [
               Expanded(
                 child: ListView.builder(
                   itemBuilder: (context, index) {
-                    return TaskWidget(
+                    return NoteWidget(
                       note: notes[index],
                     );
                   },

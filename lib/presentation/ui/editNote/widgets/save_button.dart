@@ -5,7 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class SaveButton extends StatelessWidget {
   final VoidCallback onPressed;
 
-  const SaveButton({required this.onPressed});
+  const SaveButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

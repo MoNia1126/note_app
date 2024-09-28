@@ -3,10 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:note_app/presentation/ui/home/screens/home_screen.dart';
 import 'package:note_app/presentation/ui/login/screens/login_screen.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:note_app/presentation/ui/splash/widgets/splash_background.dart';
 
 class SplashScreen extends StatefulWidget {
-  static const String routeName = "splash";
   final Widget? child;
 
   const SplashScreen({super.key, this.child});
@@ -31,35 +30,15 @@ class _SplashViewState extends State<SplashScreen> {
       );
     } else {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => LoginScreen()),
+        MaterialPageRoute(builder: (context) => const LoginScreen()),
       );
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    // var mediaQuary =
-    //     MediaQuery.of(context).size;
-    return Scaffold(
-      body: Stack(
-        fit: StackFit.expand,
-        children: [
-          Image.asset(
-            'assets/images/main_back.jpg',
-            fit: BoxFit.cover,
-          ),
-          Center(
-            child: Text(
-              (AppLocalizations.of(context)!.notesApp),
-              style: const TextStyle(
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ],
-      ),
+    return const Scaffold(
+      body: SplashBackground(),
     );
   }
 }

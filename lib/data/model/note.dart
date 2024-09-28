@@ -1,5 +1,4 @@
 class Note {
-  // String idNote;
   String noteId;
   String title;
   String description;
@@ -8,7 +7,6 @@ class Note {
 
   Note(
       {
-      // required this.idNote,
       required this.noteId,
       required this.title,
       required this.description,
@@ -17,7 +15,6 @@ class Note {
 
   Note.formFireStore(Map<String, dynamic> data)
       : this(
-          // idNote: data['idNote'],
           noteId: data['noteId'],
           title: data['title'] ?? '',
           description: data['description'] ?? '',
@@ -27,7 +24,6 @@ class Note {
 
   Map<String, dynamic> toFireStore() {
     return {
-      // 'idNote': idNote,
       'noteId': noteId,
       'title': title,
       'description': description,

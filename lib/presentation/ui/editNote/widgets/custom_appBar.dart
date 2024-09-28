@@ -17,6 +17,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             .titleLarge!
             .copyWith(fontFamily: 'PlaywriteCU'),
       ),
+      leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          )),
     );
   }
 

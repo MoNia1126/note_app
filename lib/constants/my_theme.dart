@@ -10,6 +10,8 @@ class MyTheme {
   static Color backgroundDark = const Color(0xff060E1E);
   static Color darkBlack = const Color(0xff141922);
   static Color grayColor = const Color(0xff96969a);
+  static Color backgroundMint = const Color(0xff00849A);
+  static Color backgroundBlue = const Color(0xff0065D8);
 
   static ThemeData lightTheme = ThemeData(
     primaryColor: primaryLight,
@@ -29,8 +31,8 @@ class MyTheme {
       shape: StadiumBorder(
           side: BorderSide(
             color: MyTheme.whiteColor,
-            width: 6,
-          )),
+        width: 5,
+      )),
     ),
     textTheme: TextTheme(
       titleLarge: TextStyle(

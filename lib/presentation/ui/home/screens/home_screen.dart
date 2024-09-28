@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/presentation/ui/home/UserCubit/user_cubit.dart';
-import 'package:note_app/presentation/ui/home/UserCubit/user_state.dart';
-import 'package:note_app/presentation/ui/settings/setting_screen.dart';
-import 'package:note_app/constants/my_theme.dart';
-import 'package:note_app/presentation/ui/taskList/screens/task_list_tab.dart';
-import 'package:note_app/presentation/ui/taskList/widgets/add_task_bottom_sheet.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:note_app/presentation/ui/home/widgets/add_note_fAB.dart';
+import 'package:note_app/presentation/ui/home/widgets/home_appbar.dart';
+import 'package:note_app/presentation/ui/home/widgets/home_bottom_navigation_bar.dart';
+import 'package:note_app/presentation/ui/noteList/screens/note_list_tab.dart';
+import 'package:note_app/presentation/ui/settings/screens/setting_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'home';
@@ -25,79 +24,27 @@ class _HomeScreenState extends State<HomeScreen> {
     return BlocProvider(
       create: (context) => UserCubit()..fetchUserName(),
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).primaryColor,
-          elevation: 0,
-          title: BlocBuilder<UserCubit, UserState>(
-            builder: (context, state) {
-              // if (state is UserLoading) {
-              //   return const CircularProgressIndicator();
-              // } else
-              if (state is UserLoaded) {
-                return Text(
-                  '${(AppLocalizations.of(context)!.welcome)}, ${state.userName}',
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                        fontFamily: 'PlaywriteCU',
-                      ),
-                );
-              } else if (state is UserError) {
-                return Text(
-                    (AppLocalizations.of(context)!.errorFetchingUserData));
-              } else {
-                return Text(AppLocalizations.of(context)!.welcome);
-              }
-            },
-          ),
-        ),
-        bottomNavigationBar: BottomAppBar(
-          height: MediaQuery.of(context).size.height * 0.097,
-          shape: const CircularNotchedRectangle(),
-          notchMargin: 10,
-          child: BottomNavigationBar(
-            currentIndex: selectedIndex,
-            onTap: (index) {
-              setState(() {
-                selectedIndex = index;
-              });
-            },
-            items: [
-              BottomNavigationBarItem(
-                icon: const Icon(Icons.list),
-                label: (AppLocalizations.of(context)!.taskList),
-              ),
-              BottomNavigationBarItem(
-                icon: const Icon(Icons.settings),
-                label: (AppLocalizations.of(context)!.settings),
-              ),
-            ],
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            showModalBottomSheet(
-              context: context,
-              isScrollControlled: true,
-              builder: (context) {
-                return SingleChildScrollView(
-                  child: AddTaskBottomSheet(),
-                );
-              },
-            );
+        appBar: const HomeAppBar(),
+        bottomNavigationBar: HomeBottomNavigationBar(
+          selectedIndex: selectedIndex,
+          onTap: (index) {
+            setState(() {
+              selectedIndex = index;
+            });
           },
-          child: Icon(
-            Icons.add,
-            size: 33,
-            color: MyTheme.whiteColor,
-          ),
         ),
+        floatingActionButton: const AddNoteFAB(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        body: tabs[selectedIndex],
+        body: _getTab(selectedIndex),
       ),
     );
   }
 
-  List<Widget> tabs = [
-    const TaskListTab(),
-    const SettingsScreen(),
-  ];
+  Widget _getTab(int index) {
+    List<Widget> tabs = const [
+      NoteListTab(),
+      SettingsScreen(),
+    ];
+    return tabs[index];
+  }
 }
